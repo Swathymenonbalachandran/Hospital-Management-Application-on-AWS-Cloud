@@ -1,0 +1,7 @@
+ <h1>Existing Movie Details</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value = "Save Changes">
+    </form>
+<a href="{% url 'home:index'%}" class="btn btn-secondary">Back to Movie List</a>

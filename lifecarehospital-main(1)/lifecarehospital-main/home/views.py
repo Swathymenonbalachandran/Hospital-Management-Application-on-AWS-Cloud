@@ -40,7 +40,7 @@ def bookappointment(request):
         form = BookappointmentForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home:department')
+            return redirect('home:showappointments')
     else:
         form = BookappointmentForm()
 
@@ -54,3 +54,18 @@ def aboutus(request):
     }
     
     return render(request, 'home/about.html', context)
+@login_required 
+def showmyappointments(request):
+    myappointments = Bookappointment.objects.all().order_by('-bookingon')
+    return render(request, 'home/myappointment.html', {'myappointments': myappointments}) 
+    
+def updateappointment(request, appointment_id):
+    updateappointment = get_object_or_404(Bookappointment, pk=appointment_id)
+    if request.method == 'POST':
+        form = BookappointmentForm(request.POST, instance=updateappointment)
+        if form.is_valid():
+            form.save()
+            return redirect('home:showmyappointments', appointment_id=bookappointment.id)
+    else:
+        form = BookappointmentForm(instance=updateappointment)
+    return render(request, 'home/updateappointment.html', {'form': form, 'updateappointment': updateappointment})

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Appointment</title>
+</head>
+<body>
+    <h1>Update Appointment</h1>
+    <ul>{% for b in myappointments %}
+ 	            <div>
+	                <h2>BookingOn-{{b.bookingon}}</h2>
+	                <p>Patient Name: {{ b.pname }}</p>
+ 	                <p>Address: {{b.paddress }}</p>
+ 	                <p>Phone: {{b.pphone }}</p>
+ 	                <p>Email: {{b.pemail }}</p>
+	                <p>Department: {{b.depname }}</p>
+ 	                <p>Doctor: {{b.docname }}</p>
+ 	                <p>BookingDate {{b.bookingdate }}</p>
+ 	               <form method="post">
+                    {% csrf_token %}
+                    <a href="{% url 'home:updateappointment' b.id %}">Update</a>
+                </form>
+    
+ 	                </div>
+ 	        {% endfor %}
+ 	        </ul>
+</body>
+</html>
