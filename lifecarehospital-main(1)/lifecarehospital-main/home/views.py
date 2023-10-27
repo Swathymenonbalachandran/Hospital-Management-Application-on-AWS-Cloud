@@ -59,13 +59,16 @@ def showmyappointments(request):
     myappointments = Bookappointment.objects.all().order_by('-bookingon')
     return render(request, 'home/myappointment.html', {'myappointments': myappointments}) 
     
-def updateappointment(request, appointment_id):
-    updateappointment = get_object_or_404(Bookappointment, pk=appointment_id)
+@login_required
+def updateappointment(request, bookappointment_id):
+    updateappointment = get_object_or_404(Bookappointment, pk=bookappointment_id)
+    
     if request.method == 'POST':
         form = BookappointmentForm(request.POST, instance=updateappointment)
         if form.is_valid():
             form.save()
-            return redirect('home:showmyappointments', appointment_id=bookappointment.id)
+            return redirect('home:showmyappointments')  # Redirect to showmyappointments
     else:
         form = BookappointmentForm(instance=updateappointment)
+    
     return render(request, 'home/updateappointment.html', {'form': form, 'updateappointment': updateappointment})

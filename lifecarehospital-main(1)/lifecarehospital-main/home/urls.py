@@ -13,7 +13,7 @@ urlpatterns = [
     path('bookappointment/', views.bookappointment, name='bookappointment'),
     path('about/', views.aboutus, name='aboutus'),
     path('myappointments/', views.showmyappointments, name='showmyappointments'),
-    path('updateappointment/<int:appointment_id>/', views.updateappointment, name='updateappointment'),
+    path('updateappointment/<int:bookappointment_id>/', views.updateappointment, name='updateappointment'),
    # path('userportal/', views.userportal, name='userportal'),
 ]
 if settings.DEBUG:
