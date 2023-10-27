@@ -1,0 +1,13 @@
+<form method="POST">
+    <div>
+        <h1>Portal Signup</h1>
+        If you have an account <a href="{% url 'sign_in' %}">Sign In</a>
+    </div>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div>
+        <button type="submit">Sign Up</button>
+    </div>
+    <p></p>
+    
+</form>

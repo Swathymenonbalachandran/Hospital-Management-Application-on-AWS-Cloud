@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Your head content here -->
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home:index' %}">Home</a></li>
+                <li><a href="{% url 'home:aboutus' %}">About Us</a></li>
+                <li><a href="{% url 'home:department' %}">Departments</a></li>
+                <li><a href="{% url 'home:doctors' %}">Doctors</a></li>
+                {% if user_authenticated %}
+                    <li><a href="{% url 'home:bookappointment' %}">Book Appointment</a></li>
+                {% else %}
+                    <li><a href="{% url 'sign_in' %}">Please sign in to book an appointment</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <!-- Your footer content here -->
+    </footer>
+</body>
+</html>

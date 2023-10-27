@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Doctors</title>
+</head>
+<body>
+    <h1 class="text-center">Doctors</h1>
+    <ul>
+        {% for d in doc %}
+            <div>
+                <h2>{{ d.docname }}</h2>
+                <p>Department: {{ d.depname }}</p>
+                <p>Qualification: {{ d.qualification }}</p>
+                {% if d.docimage %}
+                    <img src="{{ d.docimage.url }}" alt="{{ d.docname }} Image">
+                {% else %}
+                    <p>Nil</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </ul>
+</body>
+</html>

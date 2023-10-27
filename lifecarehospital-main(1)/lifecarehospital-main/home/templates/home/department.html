@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Departments</title>
+</head>
+
+<body>
+    <h1 class="text-center">Departments</h1>
+    <ul>
+    {% for d in dept %}
+        <div>
+            <h1>{{ d.depname }}</h1>
+            <p>{{ d.depdescription }}</p>
+        </div>
+    {% endfor %}
+    </ul>
+</body>
+</html>
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book an Appointment</title>
+</head>
+<body>
+    <h1>Book an Appointment</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div>
+            <label for="{{ form.patientname.id_for_label }}">Patient Name:</label>
+            {{ form.pname }}
+        </div>
+        <div>
+            <label for="{{ form.paddress.id_for_label }}">Patient Address:</label>
+            {{ form.paddress }}
+        </div>
+        <div>
+            <label for="{{ form.pphone.id_for_label }}">Patient Phone:</label>
+            {{ form.pphone }}
+        </div>
+        <div>
+            <label for="{{ form.pemail.id_for_label }}">Patient Email:</label>
+            {{ form.pemail }}
+        </div>
+        <div>
+            <label for="{{ form.department.id_for_label }}">Select Department:</label>
+            {{ form.depname }}
+        </div>
+        <div>
+            <label for="{{ form.doctor.id_for_label }}">Select Doctor:</label>
+            {{ form.docname }}
+        </div>
+        <div>
+            <label for="{{ form.bookingdate.id_for_label }}">Select bookingdate:</label>
+            {{ form.bookingdate }}
+        </div>
+        <div>
+            <label for="{{ form.bookingon.id_for_label }}">Select bookingon:</label>
+            {{ form.bookingon }}
+        </div>
+        
+        <div class="box" style="background: #2d3e3f">
+    		<input type="Submit" name="Submit" class="submit" value="SUBMIT">
+    	</div>
+    </form>
+</body>
+</html>
