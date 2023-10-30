@@ -1,8 +1,11 @@
 <!DOCTYPE html>
+{% extends "home/base.html" %}
+
 <html>
 <head>
     <title>Book an Appointment</title>
 </head>
+{% block content %}
 <body>
     <h1>Book an Appointment</h1>
     <form method="post" enctype="multipart/form-data">
@@ -47,3 +50,5 @@
     </form>
 </body>
 </html>
+
+{% endblock content %}

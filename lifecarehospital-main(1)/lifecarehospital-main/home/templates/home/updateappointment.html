@@ -1,7 +1,12 @@
-<h1>Existing Appointment Details</h1>
+{% extends "home/base.html" %}
+{% block content %}
+
+
+<h1>Update Appointment Details</h1>
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Save Changes">
 </form>
 <a href="{% url 'home:index' %}" class="btn btn-secondary">Back to Appointment List</a>
+{% endblock content %}

@@ -16,6 +16,11 @@
                 {% else %}
                     <li><a href="{% url 'sign_in' %}">Please sign in to book an appointment</a></li>
                 {% endif %}
+                {% if user_authenticated %}
+                    <li><a href="{% url 'home:showmyappointments' %}">My Appointment</a></li>
+                {% else %}
+                    <li><a href="{% url 'sign_in' %}">Please sign in to view your appointment</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
