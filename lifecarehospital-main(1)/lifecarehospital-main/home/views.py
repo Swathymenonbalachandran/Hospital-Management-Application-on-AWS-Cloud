@@ -31,9 +31,7 @@ def doctors(request):
     }
     return render(request,'home/doctors.html', context)
     
-#def userportal(request):
-    # Your view logic here
-   # return render(request, 'home/userportal.html')  
+ 
 @login_required
 def bookappointment(request):
     if request.method == 'POST':
@@ -47,7 +45,7 @@ def bookappointment(request):
     return render(request, 'home/bookappointment.html', {'form': form})
     
 def aboutus(request):
-    # You can add any context data you want to pass to the template
+   
     context = {
         'aboutus': 'About Us',
         'page_title': 'aboutus',
@@ -72,3 +70,12 @@ def updateappointment(request, bookappointment_id):
         form = BookappointmentForm(instance=updateappointment)
     
     return render(request, 'home/updateappointment.html', {'form': form, 'updateappointment': updateappointment})
+    
+def deleteappointment(request, bookappointment_id):
+    deleteappointment = get_object_or_404(Bookappointment, pk=bookappointment_id)
+
+    if request.method == 'POST':
+        deleteappointment.delete()
+        return redirect('home:showmyappointments')   # Redirect to showmyappointments
+
+    return render(request, 'home/deleteappointment.html', {'deleteappointment': deleteappointment})

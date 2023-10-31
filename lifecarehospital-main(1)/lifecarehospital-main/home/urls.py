@@ -14,6 +14,7 @@ urlpatterns = [
     path('about/', views.aboutus, name='aboutus'),
     path('myappointments/', views.showmyappointments, name='showmyappointments'),
     path('updateappointment/<int:bookappointment_id>/', views.updateappointment, name='updateappointment'),
+    path('deleteappointment/<int:bookappointment_id>/', views.deleteappointment, name='deleteappointment'),
    # path('userportal/', views.userportal, name='userportal'),
 ]
 if settings.DEBUG:

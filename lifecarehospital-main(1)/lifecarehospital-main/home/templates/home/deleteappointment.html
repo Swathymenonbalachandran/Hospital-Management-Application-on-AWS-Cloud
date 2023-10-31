@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends "home/base.html" %}
+<html>
+<head>
+    <title>Delete Appointment</title>
+</head>
+{% block content %}
+<body>
+    <h1>Delete Appointment</h1>
+    <p>Are you sure you want to delete {{ deleteappointment.docname }}-{{ deleteappointment.bookingdate}} Appointment?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm Delete</button>
+    </form>
+    <a href="{% url 'home:showmyappointments' %}">Cancel</a>
+</body>
+</html>
+{% endblock content %}

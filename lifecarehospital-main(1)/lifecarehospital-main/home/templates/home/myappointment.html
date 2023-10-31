@@ -19,7 +19,7 @@
  	                <p>BookingDate {{b.bookingdate }}</p>
  	               <form method="post">
                     {% csrf_token %}
-                    <a href="{% url 'home:updateappointment' b.id %}">Update</a>
+                    <a href="{% url 'home:updateappointment' b.id %}">Update</a>      <a href="{% url 'home:deleteappointment' b.id %}">Delete</a>
 
                 </form>
     
