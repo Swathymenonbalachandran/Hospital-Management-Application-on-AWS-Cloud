@@ -1,5 +1,4 @@
 
-
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -9,6 +8,7 @@
 <header>
 <div class="topnav">
 <a class="active" href="/">Home</a> |
+
 {% if user.is_authenticated %}
 <div> You are signed in as {{user.username}}...
 <a href="{% url 'sign_out' %}">Sign out</a>

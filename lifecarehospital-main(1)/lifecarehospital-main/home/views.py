@@ -53,7 +53,7 @@ def aboutus(request):
     
     return render(request, 'home/about.html', context)
 @login_required 
-def showmyappointments(request):
+def showappointments(request):
     myappointments = Bookappointment.objects.all().order_by('-bookingon')
     return render(request, 'home/myappointment.html', {'myappointments': myappointments}) 
     
@@ -65,7 +65,7 @@ def updateappointment(request, bookappointment_id):
         form = BookappointmentForm(request.POST, instance=updateappointment)
         if form.is_valid():
             form.save()
-            return redirect('home:showmyappointments')  # Redirect to showmyappointments
+            return redirect('home:showappointments')  # Redirect to showmyappointments
     else:
         form = BookappointmentForm(instance=updateappointment)
     

@@ -1,36 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Your head content here -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Hospital Name</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        nav li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ecf0f1;
+        }
+
+        main {
+            text-align: center;
+        }
+
+        main img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        /* Hide all slides by default */
+        .mySlides {
+            display: none;
+            text-align: center;
+        }
+
+        /* Style the quotes */
+        .mySlides p {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0; /* Remove margin to avoid sliding */
+        }
+
+        /* Add animation to the slides */
+        .fade {
+            animation: fade 3s ease-in-out infinite;
+        }
+
+        /* Keyframe animation for fading */
+        @keyframes fade {
+            0%, 100% {
+                opacity: 0.4;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #3498db;
+            background-color: #fff;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        
+       .signout-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.signout-button:hover {
+    color: #ecf0f1;
+}
+    </style>
 </head>
 <body>
     <header>
+        <h1>LifeCare Hospital</h1>
         <nav>
             <ul>
                 <li><a href="{% url 'home:index' %}">Home</a></li>
                 <li><a href="{% url 'home:aboutus' %}">About Us</a></li>
                 <li><a href="{% url 'home:department' %}">Departments</a></li>
                 <li><a href="{% url 'home:doctors' %}">Doctors</a></li>
-                {% if user_authenticated %}
-                    <li><a href="{% url 'home:bookappointment' %}">Book Appointment</a></li>
-                {% else %}
-                    <li><a href="{% url 'sign_in' %}">Please sign in to book an appointment</a></li>
-                {% endif %}
-                {% if user_authenticated %}
-                    <li><a href="{% url 'home:showmyappointments' %}">My Appointment</a></li>
-                {% else %}
-                    <li><a href="{% url 'sign_in' %}">Please sign in to view your appointment</a></li>
-                {% endif %}
+                <li><a href="{% url 'home:doctors' %}">Doctors</a></li>
+                 
             </ul>
         </nav>
     </header>
 
     <main>
+       <div class="slideshow-container">
+    <div class="mySlides">
+        <p>"WE CARE"</p>
+        <p>"Quality Health Care at your reach"</p>
+       <div class="button-container">
+    {% if user_authenticated %} 
+        <li><a href="{% url 'home:bookappointment' %}" class="button">Book Appointment</a></li>
+        <li><a href="{% url 'home:showappointments' %}" class="button">My Appointment</a></li>
+        <a href="{% url 'sign_out' %}" class="signout-button">Sign Out</a>
+    {% else %}
+        <li><a href="{% url 'sign_in' %}" class="button">Sign in to Book an Appointment and View Appointments</a></li>
+    {% endif %}
+</div>
+
+    </div>
+</div>
+
+
         {% block content %}{% endblock %}
     </main>
 
     <footer>
-        <!-- Your footer content here -->
+        &copy; 2023 Your Hospital Name. All rights reserved.
     </footer>
+
+    <script>
+        let slideIndex = 0;
+
+        function showSlides() {
+    let i;
+    const slides = document.getElementsByClassName("mySlides");
+
+    // Hide all slides
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+        slideIndex++;
+
+        if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+
+    setTimeout(showSlides, 5000); // Change slide every 5 seconds
+}
+
+        document.addEventListener("DOMContentLoaded", function () {
+            showSlides();
+        });
+    </script>
 </body>
 </html>

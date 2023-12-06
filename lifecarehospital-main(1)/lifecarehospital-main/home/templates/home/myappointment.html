@@ -1,31 +1,85 @@
 <!DOCTYPE html>
 {% extends "home/base.html" %}
-<html>
+<html lang="en">
 <head>
-    <title>Update Appointment</title>
-</head>
-{% block content %}
-<body>
-    <h1>Update Appointment</h1>
-    <ul>{% for b in myappointments %}
- 	            <div>
-	                <h2>BookingOn-{{b.bookingon}}</h2>
-	                <p>Patient Name: {{ b.pname }}</p>
- 	                <p>Address: {{b.paddress }}</p>
- 	                <p>Phone: {{b.pphone }}</p>
- 	                <p>Email: {{b.pemail }}</p>
-	                <p>Department: {{b.depname }}</p>
- 	                <p>Doctor: {{b.docname }}</p>
- 	                <p>BookingDate {{b.bookingdate }}</p>
- 	               <form method="post">
-                    {% csrf_token %}
-                    <a href="{% url 'home:updateappointment' b.id %}">Update</a>      <a href="{% url 'home:deleteappointment' b.id %}">Delete</a>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Appointments</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
 
+        h1, h2 {
+            color: #007bff;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        div {
+            background-color: #f0f0f0; /* Light gray background */
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 8px 12px;
+            margin-right: 10px;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .update {
+            background-color: #5cb85c; /* Light green update button */
+        }
+
+        .delete {
+            background-color: #d9534f; /* Light red delete button */
+        }
+    </style>
+</head>
+
+{% block content %}
+
+<body>
+    <h1>My Appointments</h1>
+    <h2>Manage and update your appointments easily</h2>
+    <ul>
+        {% for b in myappointments %}
+            <div>
+                <h2>Booking On: {{ b.bookingon }}</h2>
+                <p>Patient Name: {{ b.pname }}</p>
+                <p>Address: {{ b.paddress }}</p>
+                <p>Phone: {{ b.pphone }}</p>
+                <p>Email: {{ b.pemail }}</p>
+                <p>Department: {{ b.depname }}</p>
+                <p>Doctor: {{ b.docname }}</p>
+                <p>Booking Date: {{ b.bookingdate }}</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <a class="update" href="{% url 'home:updateappointment' b.id %}">Update</a>
+                    <a class="delete" href="{% url 'home:deleteappointment' b.id %}">Delete</a>
                 </form>
-    
- 	                </div>
- 	        {% endfor %}
- 	        </ul>
+            </div>
+        {% endfor %}
+    </ul>
 </body>
 </html>
+
 {% endblock content %}

@@ -1,11 +1,72 @@
-<!DOCTYPE html>
 {% extends "home/base.html" %}
 
+{% block content %}
+<!DOCTYPE html>
 <html>
+
 <head>
     <title>Book an Appointment</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+
+        h1 {
+            color: #0463FA;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .box {
+            background: #2d3e3f;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .submit {
+            background: #0463FA;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .submit:hover {
+            background: #0347b5;
+        }
+    </style>
 </head>
-{% block content %}
+
 <body>
     <h1>Book an Appointment</h1>
     <form method="post" enctype="multipart/form-data">
@@ -43,12 +104,13 @@
             <label for="{{ form.bookingon.id_for_label }}">Select bookingon:</label>
             {{ form.bookingon }}
         </div>
-        
-        <div class="box" style="background: #2d3e3f">
-    		<input type="Submit" name="Submit" class="submit" value="SUBMIT">
-    	</div>
+
+        <div class="box">
+            <input type="Submit" name="Submit" class="submit" value="SUBMIT">
+        </div>
     </form>
 </body>
+
 </html>
 
 {% endblock content %}
