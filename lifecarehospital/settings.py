@@ -25,7 +25,7 @@ SECRET_KEY = '*zbl@&ys^1+x#x8l##g5@ua=t1h912@vu9u8k$@*p^b&-3q4e8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['http://x23108568-lifecarehospital-env.eba-dqsicvpm.eu-west-3.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['x23108568-lifecarehospital-env.eba-dqsicvpm.eu-west-3.elasticbeanstalk.com','d8d155211e2d4c0fa932621c6f672ecf.vfs.cloud9.eu-west-1.amazonaws.com']
 
 
 # Application definition
