@@ -10,7 +10,7 @@ charset-normalizer==3.3.2
 colorama==0.4.3
 decorator==5.1.1
 dill==0.3.7
-Django==2.1.15
+Django==4.2.8
 executing==2.0.0
 idna==3.6
 ipython==8.12.3
