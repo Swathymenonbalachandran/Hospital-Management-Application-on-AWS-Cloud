@@ -52,6 +52,15 @@ def aboutus(request):
     }
     
     return render(request, 'home/about.html', context)
+    
+def contactus(request):
+   
+    context = {
+        'contactus': 'Contact Us',
+        'page_title': 'contactus',
+    }
+    return render(request, 'home/contactus.html', context)   
+    
 @login_required 
 def showappointments(request):
     myappointments = Bookappointment.objects.all().order_by('-bookingon')
