@@ -65,7 +65,7 @@ def updateappointment(request, bookappointment_id):
         form = BookappointmentForm(request.POST, instance=updateappointment)
         if form.is_valid():
             form.save()
-            return redirect('home:showappointments')  # Redirect to showmyappointments
+            return redirect('home:showappointments')  
     else:
         form = BookappointmentForm(instance=updateappointment)
     
@@ -76,6 +76,6 @@ def deleteappointment(request, bookappointment_id):
 
     if request.method == 'POST':
         deleteappointment.delete()
-        return redirect('home:showmyappointments')   # Redirect to showmyappointments
+        return redirect('home:showappointments')   
 
     return render(request, 'home/deleteappointment.html', {'deleteappointment': deleteappointment})

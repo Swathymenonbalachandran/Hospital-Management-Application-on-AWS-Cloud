@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% extends "home/base.html" %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,10 +13,35 @@
             color: #333;
             margin: 0;
             padding: 0;
+            text-align: center;
         }
 
         h1, h2 {
-            color: #007bff;
+            color: #2F4F4F; /* Dark Grey color */
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #2F4F4F;
+            color: #fff;
+        }
+
+        tr:hover {
+            background-color: #f0f0f0;
         }
 
         ul {
@@ -23,17 +49,12 @@
             padding: 0;
         }
 
-        div {
-            background-color: #f0f0f0; /* Light gray background */
+        .appointment-box {
+            background-color: #f0f0f0;
             padding: 20px;
             margin: 10px 0;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        form {
-            display: inline-block;
-            margin-top: 10px;
         }
 
         a {
@@ -46,11 +67,14 @@
         }
 
         .update {
-            background-color: #5cb85c; /* Light green update button */
+            background-color: #808080; /* Grey color for update button */
+            color: #fff; /* White text color */
         }
 
         .delete {
-            background-color: #d9534f; /* Light red delete button */
+            background-color: #fff; /* White color for delete button */
+            color: #808080; /* Grey text color */
+            border: 1px solid #808080; /* Grey border for delete button */
         }
     </style>
 </head>
@@ -60,25 +84,38 @@
 <body>
     <h1>My Appointments</h1>
     <h2>Manage and update your appointments easily</h2>
-    <ul>
+    <table>
+        <tr>
+            <th>Booking On</th>
+            <th>Patient Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Doctor</th>
+            <th>Booking Date</th>
+            <th>Actions</th>
+        </tr>
         {% for b in myappointments %}
-            <div>
-                <h2>Booking On: {{ b.bookingon }}</h2>
-                <p>Patient Name: {{ b.pname }}</p>
-                <p>Address: {{ b.paddress }}</p>
-                <p>Phone: {{ b.pphone }}</p>
-                <p>Email: {{ b.pemail }}</p>
-                <p>Department: {{ b.depname }}</p>
-                <p>Doctor: {{ b.docname }}</p>
-                <p>Booking Date: {{ b.bookingdate }}</p>
-                <form method="post">
-                    {% csrf_token %}
-                    <a class="update" href="{% url 'home:updateappointment' b.id %}">Update</a>
-                    <a class="delete" href="{% url 'home:deleteappointment' b.id %}">Delete</a>
-                </form>
-            </div>
+            <tr class="appointment-box">
+                <td>{{ b.bookingon }}</td>
+                <td>{{ b.pname }}</td>
+                <td>{{ b.paddress }}</td>
+                <td>{{ b.pphone }}</td>
+                <td>{{ b.pemail }}</td>
+                <td>{{ b.depname }}</td>
+                <td>{{ b.docname }}</td>
+                <td>{{ b.bookingdate }}</td>
+                <td>
+                    <form method="post">
+                        {% csrf_token %}
+                        <a class="update" href="{% url 'home:updateappointment' b.id %}">Update</a>
+                        <a class="delete" href="{% url 'home:deleteappointment' b.id %}">Delete</a>
+                    </form>
+                </td>
+            </tr>
         {% endfor %}
-    </ul>
+    </table>
 </body>
 </html>
 
