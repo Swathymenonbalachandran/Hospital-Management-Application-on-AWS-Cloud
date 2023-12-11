@@ -16,7 +16,7 @@
         }
 
         h1 {
-            color: #6d6d6d; /* Dark Grey shade */
+            color: #6d6d6d; 
             text-align: center;
             margin-top: 20px;
         }
@@ -24,7 +24,7 @@
         form {
             max-width: 600px;
             margin: 0 auto;
-            background-color: #fff; /* White background */
+            background-color: #fff; 
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -47,15 +47,15 @@
         }
 
         .box {
-            background: #6d6d6d; /* Dark Greyish background */
+            background: #6d6d6d; 
             padding: 10px;
             border-radius: 5px;
             text-align: center;
         }
 
         .submit {
-            background: #fff; /* White background */
-            color: #6d6d6d; /* Dark Greyish color */
+            background: #fff; 
+            color: #6d6d6d; 
             border: none;
             padding: 10px 20px;
             font-size: 16px;
@@ -64,8 +64,8 @@
         }
 
         .submit:hover {
-            background: #f4f4f4; /* Light Grey background on hover */
-            color: #333; /* Dark Greyish color on hover */
+            background: #f4f4f4; 
+            color: #333; 
         }
     </style>
 </head>
@@ -76,6 +76,7 @@
         {% csrf_token %}
         {{ form.non_field_errors }}
         <div>
+            <h3>Fill out the form below to schedule your appointment</h3>
             <label for="{{ form.patientname.id_for_label }}">Patient Name:</label>
             {{ form.pname }}
         </div>
