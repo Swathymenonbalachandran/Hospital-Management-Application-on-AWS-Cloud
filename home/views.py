@@ -85,6 +85,6 @@ def deleteappointment(request, bookappointment_id):
 
     if request.method == 'POST':
         deleteappointment.delete()
-        return redirect('home:showappointments')   
+        return redirect('home:showmyappointments')   
 
     return render(request, 'home/deleteappointment.html', {'deleteappointment': deleteappointment})
