@@ -26,7 +26,6 @@ def department(request):
     
     
 def doctors(request):
-    department =deptname
     context = {
         'doc': Doctors.objects.all()
     }
