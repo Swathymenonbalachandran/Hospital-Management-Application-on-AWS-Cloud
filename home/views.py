@@ -26,6 +26,7 @@ def department(request):
     
     
 def doctors(request):
+    department =deptname
     context = {
         'doc': Doctors.objects.all()
     }
@@ -85,6 +86,6 @@ def deleteappointment(request, bookappointment_id):
 
     if request.method == 'POST':
         deleteappointment.delete()
-        return redirect('home:showmyappointments')   
+        return redirect('home:showappointments')   
 
     return render(request, 'home/deleteappointment.html', {'deleteappointment': deleteappointment})
