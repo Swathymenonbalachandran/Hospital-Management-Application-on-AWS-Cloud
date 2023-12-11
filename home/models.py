@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 class Department(models.Model):
-# each class variable represents a database i.e. table field in the model
+
     depname = models.CharField(max_length=200)
     depdescription = models.TextField()
     
@@ -12,7 +12,7 @@ class Department(models.Model):
         
         
 class Doctors(models.Model):
-# each class variable represents a database i.e. table field in the model
+
     docname = models.CharField(max_length=200)
     depname = models.ForeignKey(Department,on_delete=models.CASCADE)
     qualification = models.CharField(max_length=200)
@@ -22,7 +22,7 @@ class Doctors(models.Model):
         return self.docname
         
 class Bookappointment(models.Model):
-# each class variable represents a database i.e. table field in the model
+
     pname = models.CharField(max_length=200)
     paddress = models.CharField(max_length=600) 
     pphone = models.CharField(max_length=10)
