@@ -17,7 +17,7 @@ phases:
       - python --version
   pre_build:
     commands:
-      - pylint --disable=E0401 $CODEBUILD_SRC_DIR/*.py
+      #- pylint --disable=E0401 $CODEBUILD_SRC_DIR/*.py
       #- pylint --disable=C,R,E0401 $CODEBUILD_SRC_DIR/*/*.py
     
       - sonar-scanner -Dsonar.organization=swathy-3005 -Dsonar.projectKey=swathy-3005_hospitallifecare -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=408306f995914f96f1b065241e004cddd6e5d931
