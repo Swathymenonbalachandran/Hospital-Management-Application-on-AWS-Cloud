@@ -1,9 +1,10 @@
 #!/usr/bin/env python
+"""Django management script."""
 import os
 import sys
 
 def main():
-    """Django management script."""
+    """Execute Django management commands."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'lifecarehospital.settings')
     try:
         from django.core.management import execute_from_command_line
