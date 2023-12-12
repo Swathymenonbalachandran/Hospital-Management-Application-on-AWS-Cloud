@@ -2,7 +2,8 @@
 import os
 import sys
 
-if __name__ == '__main__':
+def main():
+    """Django management script."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'lifecarehospital.settings')
     try:
         from django.core.management import execute_from_command_line
@@ -13,3 +14,6 @@ if __name__ == '__main__':
             "forget to activate a virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
+
+if __name__ == '__main__':
+    main()
