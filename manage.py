@@ -1,3 +1,10 @@
+"""
+Django management script.
+
+This script is the main entry point for Django management commands.
+
+Author: Your Name
+"""
 #!/usr/bin/env python
 import os
 import sys
