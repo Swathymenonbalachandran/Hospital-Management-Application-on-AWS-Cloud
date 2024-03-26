@@ -4,6 +4,8 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+import requests
+from django.shortcuts import render
 
 from .models import Department
 from .models import Doctors
@@ -88,3 +90,45 @@ def deleteappointment(request, bookappointment_id):
         return redirect('home:showappointments')   
 
     return render(request, 'home/deleteappointment.html', {'deleteappointment': deleteappointment})
+
+def calorie_calculator(request):
+    if request.method == 'POST':
+        # Get form data
+        age = int(request.POST.get('age'))
+        gender = request.POST.get('gender')
+        weight = float(request.POST.get('weight'))
+        height = float(request.POST.get('height'))
+        activity_level = request.POST.get('activity_level')
+        goal = request.POST.get('goal')
+
+        # Prepare payload for the API request
+        payload = {
+            'age': age,
+            'gender': gender,
+            'weight': weight,
+            'height': height,
+            'activity_level': activity_level,
+            'goal': goal
+        }
+
+        # Make a POST request to the AWS Lambda endpoint
+        api_url = "https://529k6hcwv3.execute-api.eu-west-1.amazonaws.com/dev"
+        response = requests.post(api_url, json=payload)
+
+        if response.status_code == 200:
+            data = response.json()
+            calorie_intake = data.get('calorie_intake')
+            return render(request, 'home/calorie_calculator.html', {'calorie_intake': calorie_intake})
+        else:
+            error_message = "Failed to calculate calorie intake."
+            return render(request, 'home/calorie_calculator.html', {'error_message': error_message})
+    else:
+        return render(request, 'home/calorie_calculator.html')
+def bmi_calculator(request):
+    if request.method == 'POST':
+        weight = float(request.POST.get('weight'))
+        height = float(request.POST.get('height')) / 100  # Convert height to meters
+        bmi = weight / (height * height)
+        return render(request, 'home/bmi.html', {'bmi': bmi})
+    else:
+        return render(request, 'home/bmi.html')

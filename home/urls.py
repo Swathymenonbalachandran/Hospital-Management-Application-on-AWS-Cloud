@@ -16,6 +16,9 @@ urlpatterns = [
     path('showappointments/', views.showappointments, name='showappointments'),
     path('updateappointment/<int:bookappointment_id>/', views.updateappointment, name='updateappointment'),
     path('deleteappointment/<int:bookappointment_id>/', views.deleteappointment, name='deleteappointment'),
+    path('bmi_calculator/', views.bmi_calculator, name='bmi_calculator'),
+    path('calorie_calculator/', views.calorie_calculator, name='calorie_calculator'),
+    
    # path('userportal/', views.userportal, name='userportal'),
 ]
 if settings.DEBUG:
