@@ -18,7 +18,9 @@ urlpatterns = [
     path('deleteappointment/<int:bookappointment_id>/', views.deleteappointment, name='deleteappointment'),
     path('bmi_calculator/', views.bmi_calculator, name='bmi_calculator'),
     path('calorie_calculator/', views.calorie_calculator, name='calorie_calculator'),
-    
+    path('calorieintakeguidelines/', views.calorieintakeguidelines, name='calorieintakeguidelines'),
+    path('feedback/', views.submitfeedback, name='submitfeedback'),
+    path('viewfeedback/', views.viewfeedback, name='viewfeedback'),
    # path('userportal/', views.userportal, name='userportal'),
 ]
 if settings.DEBUG:

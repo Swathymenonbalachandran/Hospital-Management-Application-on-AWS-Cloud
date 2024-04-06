@@ -4,56 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Hospital Name</title>
+    <title>LifeCare Hospital</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f0f8ff; /* Light Blue */
+            color: #2c3e50; /* Dark Greyish-Blue shade */
         }
 
         header {
-            background-color: #6d6d6d; 
+            background-color: #6d6d6d; /* Dark Grey shade */
             color: #fff;
             padding: 1em;
             text-align: center;
+            font-family: 'Arial Black', sans-serif; /* Changing font and style */
+            position: relative; /* Added position for signout button */
         }
 
         nav {
-            background-color: #fff; 
+            background-color: #fff;
             padding: 1em;
             text-align: center;
         }
 
         nav a {
-            color: #6d6d6d; 
+            color: #6d6d6d; /* Dark Grey shade */
             margin: 0 15px;
             text-decoration: none;
         }
 
         nav a:hover {
-            color: #ecf0f1;
+            color: #ecf0f1; /* Light Grey shade */
         }
 
-        button,
-        .button {
-            color: #6d6d6d; 
-            background-color: #fff;
-            border: 2px solid #6d6d6d; 
-            margin: 0 15px; /* Adjust margin as needed */
+        .signout-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #fff; /* White color */
+            color: #6d6d6d; /* Dark Grey shade */
+            border: 2px solid #6d6d6d; /* Dark Grey shade */
             padding: 10px 20px; /* Adjust padding as needed */
+            text-decoration: none;
+            font-size: 16px; /* Adjust font size */
+            font-weight: bold; /* Make text bold */
         }
 
-        button:hover,
-        .button:hover {
+        .signout-button:hover {
             background-color: #6d6d6d; /* Dark Grey shade */
-            color: #fff;
+            color: #fff; /* White color */
         }
 
         footer {
             background-color: #bdc3c7; /* Light Grey shade */
-            color: #2c3e50;
+            color: #2c3e50; /* Dark Greyish-Blue shade */
             text-align: center;
             padding: 1em;
             position: fixed;
@@ -66,13 +72,17 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            height: 60vh; /* Adjust the height as needed */
             text-align: center;
+            position: relative; /* Added for positioning */
         }
 
         .main-content {
             color: #2c3e50; /* Dark Greyish-Blue shade */
             padding: 20px; /* Adjust padding as needed */
+            background-image: url('/hospital_lifecare/hospitallifecare/media/docimage/doctor_i.jpg'); /* Background image URL */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the background image */
         }
 
         .button-container {
@@ -83,63 +93,77 @@
         .button-container a {
             display: inline-block;
             margin: 0 10px; /* Adjust the margin as needed */
-            color: #6d6d6d; /* Dark Grey shade */
+            color: #000; /* Black color */
             text-decoration: none;
+            background-color: #fff; /* White background */
+            padding: 10px 20px; /* Adjust padding as needed */
+            border-radius: 4px; /* Rounded corners */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for background color and text color */
         }
 
         .button-container a:hover {
-            color: #fff;
+            background-color: #2c3e50; /* Dark Blue on hover */
+            color: #fff; /* White color on hover */
         }
 
-        .signout-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #fff;
-            color: #6d6d6d;
-            border: 2px solid #6d6d6d;
-            padding: 10px 20px;
-            text-decoration: none;
+        /* Add or adjust styles for doctors */
+        .doctors {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
         }
 
-        .signout-button:hover {
-            background-color: #6d6d6d;
-            color: #fff;
+        .doctor {
+            width: 30%; /* Adjust the width as needed */
+        }
+
+        .doctor-image {
+            width: 100%;
+            height: auto;
         }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>LifeCare Hospital</h1>
+        <h1>LifeCare Hospital</h1> <!-- Changing font and style -->
+        <div>"WE CARE"</div> <!-- Fixed typo -->
+        <div>"Quality Health Care at your reach"</div>
+         {% if user_authenticated %}
+        <a href="{% url 'sign_out' %}" class="signout-button">Sign Out</a> <!-- Show signout button only if user is authenticated -->
+        {% endif %} <!-- Moved signout button here -->
     </header>
 
     <nav>
         <a href="{% url 'home:index' %}">Home</a>
         <a href="{% url 'home:department' %}">Departments</a>
         <a href="{% url 'home:doctors' %}">Doctors</a>
-        <a href="{% url 'home:aboutus' %}">About Us</a>
-        <a href="{% url 'home:contactus' %}">Contact Us</a>
         <a href="{% url 'home:bmi_calculator' %}">BMI Calculator</a>
         <a href="{% url 'home:calorie_calculator' %}">Calorie Calculator</a>
-    </ul>
+        <a href="{% url 'home:contactus' %}">Contact Us</a>
+        <a href="{% url 'home:aboutus' %}">About Us</a>
+        <a href="{% url 'home:viewfeedback' %}">Feedback</a>
+         {% if user_authenticated %}
+        <a href="{% url 'home:submitfeedback' %}" class="button">Submit Feedback</a>
+         {% endif %}
     </nav>
 
-    <main>
+    <main class="main-content" style="background-image: url('{{ doctor_image_url }}');">
         <div class="slideshow-container">
             <div class="mySlides">
-                <p>"WE CARE"</p>
-                <p>"Quality Health Care at your reach"</p>
                 <div class="button-container">
                     {% if user_authenticated %}
-                        <a href="{% url 'home:bookappointment' %}" class="button">Book Appointment</a>
-                        <a href="{% url 'home:showappointments' %}" class="button">My Appointment</a>
-                        <a href="{% url 'sign_out' %}" class="signout-button">Sign Out</a>
+                    <a href="{% url 'home:bookappointment' %}" class="button">Book Appointment</a>
+                    <a href="{% url 'home:showappointments' %}" class="button">My Appointment</a>
                     {% else %}
-                        <a href="{% url 'sign_in' %}" class="button">Sign in to Book an Appointment and View Appointments</a>
+                    <a href="{% url 'sign_in' %}" class="button">Sign in to Book an Appointment and View Appointments</a>
                     {% endif %}
                 </div>
             </div>
+        </div>
+
+        <div class="doctors">
+            <!-- Doctor images will be displayed here -->
         </div>
 
         {% block content %}{% endblock %}
@@ -172,7 +196,7 @@
             setTimeout(showSlides, 5000); // Change slide every 5 seconds
         }
 
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             showSlides();
         });
     </script>

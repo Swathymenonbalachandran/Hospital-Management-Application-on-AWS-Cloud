@@ -133,3 +133,15 @@ LOGIN_REDIRECT_URL = '/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Define the directory for storing CAPTCHA images
+CAPTCHA_IMAGE_DIR = os.path.join(BASE_DIR, 'captcha_images')
+
+# Ensure the directory exists; create it if necessary
+os.makedirs(CAPTCHA_IMAGE_DIR, exist_ok=True)
+
+# Define the image path
+image_path = os.path.join(CAPTCHA_IMAGE_DIR, 'captcha.png')
+
+# Define the IMAGE_PATH attribute
+IMAGE_PATH = image_path

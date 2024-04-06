@@ -1,0 +1,92 @@
+{% extends "home/base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Intake Guidelines</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .tips-container {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+
+        .tip {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Calorie Intake Guidelines</h1>
+
+        <h2>To Increase Caloric Intake (Goal: Gain Weight):</h2>
+        <div class="tips-container">
+            <div class="tip">
+                <h3>Consume Nutrient-Dense Foods</h3>
+                <p>Focus on foods that are rich in calories and nutrients, such as nuts, seeds, nut butter, avocados, dried fruits, whole milk, cheese, and lean meats.</p>
+            </div>
+
+            <div class="tip">
+                <h3>Eat More Frequently</h3>
+                <p>Spread meals and snacks throughout the day to increase overall calorie intake. Including snacks between meals can be an effective way to add extra calories without feeling too full.</p>
+            </div>
+
+            <!-- Add more tips for increasing caloric intake here -->
+
+        </div>
+
+        <h2>To Decrease Caloric Intake (Goal: Lose Weight):</h2>
+        <div class="tips-container">
+            <div class="tip">
+                <h3>Focus on Whole Foods</h3>
+                <p>Prioritize whole, minimally processed foods that are high in fiber and nutrients. These foods tend to be more filling and can help reduce overall calorie intake.</p>
+            </div>
+
+            <div class="tip">
+                <h3>Portion Control</h3>
+                <p>Learn about appropriate portion sizes and use smaller plates and bowls to control portion sizes naturally.</p>
+            </div>
+
+            <!-- Add more tips for decreasing caloric intake here -->
+
+        </div>
+    </div>
+</body>
+
+</html>
+{% endblock content %}
