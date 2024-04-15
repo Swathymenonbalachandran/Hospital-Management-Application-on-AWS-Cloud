@@ -240,3 +240,14 @@ def viewfeedback(request):
     }
 
     return render(request, 'home/viewfeedback.html', context)
+    
+
+def showhospitalmap(request):
+    # Fetch hospital locations from your Google Maps API endpoint
+    api_endpoint = "https://20pceoqvmc.execute-api.eu-west-1.amazonaws.com/dev1"
+    response = requests.get(api_endpoint)
+    locations = response.json()
+
+    # Pass the hospital locations to the template
+    context = {'locations': locations}
+    return render(request, 'home/hospitalmap.html', context)

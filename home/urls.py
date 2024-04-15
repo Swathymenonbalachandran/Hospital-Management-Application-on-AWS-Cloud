@@ -21,6 +21,7 @@ urlpatterns = [
     path('calorieintakeguidelines/', views.calorieintakeguidelines, name='calorieintakeguidelines'),
     path('feedback/', views.submitfeedback, name='submitfeedback'),
     path('viewfeedback/', views.viewfeedback, name='viewfeedback'),
+    path('hospitalmap/', views.showhospitalmap, name='hospitalmap'),
    # path('userportal/', views.userportal, name='userportal'),
 ]
 if settings.DEBUG:

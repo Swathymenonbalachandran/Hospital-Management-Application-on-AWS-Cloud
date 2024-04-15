@@ -6,6 +6,8 @@ from PIL import Image, ImageDraw, ImageFont
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.conf import settings
+import requests
+from django.http import JsonResponse
 from .forms import UserSignUpForm
 
 def generate_captcha_image(text):
@@ -26,7 +28,20 @@ def generate_captcha_image(text):
 
     image.save(image_path)
     return image_path
+def generate_username(request):
+    if request.method == 'POST':
+        # Get first name and last name from the request
+        first_name = request.POST.get('first_name', '')
+        last_name = request.POST.get('last_name', '')
 
+        # Make any necessary validations and generate the username
+        generated_username = generate_username_function(first_name, last_name)  # Replace with your username generation logic
+
+        # Return the generated username in JSON format
+        return JsonResponse({'username': generated_username})
+
+    # Return a 405 Method Not Allowed error if the request method is not POST
+    return JsonResponse({'error': 'Method Not Allowed'}, status=405)
 def sign_up(request):
     if request.method == "POST":
         form = UserSignUpForm(request.POST)

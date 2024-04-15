@@ -77,26 +77,56 @@
             If you have an account <a href="{% url 'sign_in' %}">Sign In</a>
         </div>
         {% csrf_token %}
+        <label for="{{ form.first_name.id_for_label }}">First Name</label>
+         {{ form.first_name }}
         <label for="{{ form.username.id_for_label }}">Username</label>
         {{ form.username }}
-        <label for="{{ form.first_name.id_for_label }}">First Name</label>
-        {{ form.first_name }}
-        <label for="{{ form.last_name.id_for_label }}">Last Name</label>
+         <label for="{{ form.last_name.id_for_label }}">Last Name</label>
         {{ form.last_name }}
-        <label for="{{ form.email.id_for_label }}">Email</label>
+        <button type="button" id="generate-username">Generate Username</button> <!-- Add button -->
+         <label for="{{ form.email.id_for_label }}">Email</label>
         {{ form.email }}
         <label for="{{ form.password1.id_for_label }}">Password</label>
         {{ form.password1 }}
         <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
         {{ form.password2 }}
-        <div>
-            <!-- Removed CAPTCHA Image -->
-        </div>
+        
         <div>
             <button type="submit">Sign Up</button>
         </div>
         <p></p>
     </form>
+
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('generate-username').addEventListener('click', function () {
+            // Get the values of first name and last name
+            const firstName = document.getElementById('{{ form.first_name.id_for_label }}').value;
+            const lastName = document.getElementById('{{ form.last_name.id_for_label }}').value;
+
+            // Make a POST request to the API endpoint with first name and last name
+            fetch('https://vi6vw30ana.execute-api.eu-west-1.amazonaws.com/dev', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    first_name: firstName,
+                    last_name: lastName
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Fill the username field with the generated username
+                document.getElementById('{{ form.username.id_for_label }}').value = data.username;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+</script>
+
 </body>
 
 </html>

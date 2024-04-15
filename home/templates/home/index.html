@@ -140,9 +140,10 @@
         <a href="{% url 'home:doctors' %}">Doctors</a>
         <a href="{% url 'home:bmi_calculator' %}">BMI Calculator</a>
         <a href="{% url 'home:calorie_calculator' %}">Calorie Calculator</a>
+        <a href="{% url 'home:viewfeedback' %}">Feedback</a>
+        <a href="{% url 'home:hospitalmap' %}">Map</a>
         <a href="{% url 'home:contactus' %}">Contact Us</a>
         <a href="{% url 'home:aboutus' %}">About Us</a>
-        <a href="{% url 'home:viewfeedback' %}">Feedback</a>
          {% if user_authenticated %}
         <a href="{% url 'home:submitfeedback' %}" class="button">Submit Feedback</a>
          {% endif %}
@@ -171,6 +172,7 @@
 
     <footer>
         &copy; 2023 LifeCare Hospital. All rights reserved.
+       
     </footer>
 
     <script>
