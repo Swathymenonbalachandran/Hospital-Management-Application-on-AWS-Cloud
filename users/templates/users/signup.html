@@ -79,11 +79,12 @@
         {% csrf_token %}
         <label for="{{ form.first_name.id_for_label }}">First Name</label>
          {{ form.first_name }}
-        <label for="{{ form.username.id_for_label }}">Username</label>
-        {{ form.username }}
          <label for="{{ form.last_name.id_for_label }}">Last Name</label>
         {{ form.last_name }}
+        <label for="{{ form.username.id_for_label }}">Username</label>
         <button type="button" id="generate-username">Generate Username</button> <!-- Add button -->
+        {{ form.username }}
+        
          <label for="{{ form.email.id_for_label }}">Email</label>
         {{ form.email }}
         <label for="{{ form.password1.id_for_label }}">Password</label>
