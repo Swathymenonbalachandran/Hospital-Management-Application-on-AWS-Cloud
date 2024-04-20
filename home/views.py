@@ -218,7 +218,7 @@ def submitfeedback(request):
         response = requests.post(api_endpoint, json=payload)
         
         if response.status_code == 200:
-            # Redirect to a confirmation page
+           
             return redirect('home:index')
         else:
             return HttpResponse("Failed to submit feedback. Please try again later.")
@@ -226,9 +226,9 @@ def submitfeedback(request):
     return render(request, 'home/submitfeedback.html')
 
 def viewfeedback(request):
-    # Initialize DynamoDB client
-    dynamodb = boto3.resource('dynamodb')
-    table = dynamodb.Table('x23108568_lifecarehospitalfeedback')  # Replace with your DynamoDB table name
+    
+    dynamodb = boto3.resource('dynamodb', region_name='eu-west-1')
+    table = dynamodb.Table('x23108568_lifecarehospitalfeedback')  
 
     # Get all feedback items from DynamoDB table
     response = table.scan()
